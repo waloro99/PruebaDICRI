@@ -31,6 +31,23 @@ function authenticate(req, res, next) {
   });
 }
 
+function authorize(allowedRoles = []) {
+  return (req, res, next) => {
+    if (!req.user || !Array.isArray(req.user.roles)) {
+      return res.status(401).json({ message: 'No autenticado' });
+    }
+
+    const hasRole = req.user.roles.some(role => allowedRoles.includes(role));
+
+    if (!hasRole) {
+      return res.status(403).json({ message: 'No tiene permisos para esta operación' });
+    }
+
+    next();
+  };
+}
+
 module.exports = {
-  authenticate
+  authenticate,
+  authorize
 };
