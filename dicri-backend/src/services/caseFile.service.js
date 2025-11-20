@@ -89,8 +89,142 @@ async function getCaseFileById(caseFileId) {
   return rows[0];
 }
 
+async function sendCaseFileToReview(data) {
+  const { caseFileId, changedByUserId, tokenUpdated } = data;
+
+  const pool = await poolPromise;
+
+  const result = await pool
+    .request()
+    .input('CaseFileId', sql.Int, caseFileId)
+    .input('ChangedByUserId', sql.Int, changedByUserId)
+    .input('TokenUpdated', sql.NVarChar(100), tokenUpdated)
+    .execute('sps_CaseFiles_SendToReview');
+
+  const rows = result.recordset;
+
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+
+  return rows[0];
+}
+
+async function approveCaseFile(data) {
+  const {
+    caseFileId,
+    approvedByUserId,
+    tokenUpdated,
+    approvalComment
+  } = data;
+
+  const pool = await poolPromise;
+
+  const result = await pool
+    .request()
+    .input('CaseFileId', sql.Int, caseFileId)
+    .input('ApprovedByUserId', sql.Int, approvedByUserId)
+    .input('TokenUpdated', sql.NVarChar(100), tokenUpdated)
+    .input('ApprovalComment', sql.NVarChar(500), approvalComment || null)
+    .execute('sps_CaseFiles_Approve');
+
+  const rows = result.recordset;
+
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+
+  return rows[0];
+}
+
+async function rejectCaseFile(data) {
+  const {
+    caseFileId,
+    rejectedByUserId,
+    tokenUpdated,
+    rejectionReason
+  } = data;
+
+  const pool = await poolPromise;
+
+  const result = await pool
+    .request()
+    .input('CaseFileId', sql.Int, caseFileId)
+    .input('RejectedByUserId', sql.Int, rejectedByUserId)
+    .input('TokenUpdated', sql.NVarChar(100), tokenUpdated)
+    .input('RejectionReason', sql.NVarChar(500), rejectionReason)
+    .execute('sps_CaseFiles_Reject');
+
+  const rows = result.recordset;
+
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+
+  return rows[0];
+}
+
+async function updateCaseFile(data) {
+  const {
+    caseFileId,
+    caseNumber,
+    descriptionCase,
+    prosecutorOffice,
+    observations,
+    updatedByUserId,
+    tokenUpdated
+  } = data;
+
+  const pool = await poolPromise;
+
+  const result = await pool
+    .request()
+    .input('CaseFileId', sql.Int, caseFileId)
+    .input('CaseNumber', sql.NVarChar(50), caseNumber)
+    .input('DescriptionCase', sql.NVarChar(500), descriptionCase)
+    .input('ProsecutorOffice', sql.NVarChar(150), prosecutorOffice || null)
+    .input('Observations', sql.NVarChar(500), observations || null)
+    .input('UpdatedByUserId', sql.Int, updatedByUserId)
+    .input('TokenUpdated', sql.NVarChar(100), tokenUpdated)
+    .execute('sps_CaseFiles_Update');
+
+  const rows = result.recordset;
+
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+
+  return rows[0];
+}
+
+async function deleteCaseFile(data) {
+  const { caseFileId, deletedByUserId, tokenUpdated } = data;
+
+  const pool = await poolPromise;
+
+  const result = await pool
+    .request()
+    .input('CaseFileId', sql.Int, caseFileId)
+    .input('DeletedByUserId', sql.Int, deletedByUserId)
+    .input('TokenUpdated', sql.NVarChar(100), tokenUpdated)
+    .execute('sps_CaseFiles_DeleteLogical');
+
+  const rows = result.recordset;
+
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+
+  return rows[0];
+}
+
 module.exports = {
   createCaseFile,
   getCaseFilesList,
-  getCaseFileById
+  getCaseFileById,
+  sendCaseFileToReview,
+  approveCaseFile,
+  rejectCaseFile,
+  updateCaseFile,
+  deleteCaseFile
 };
