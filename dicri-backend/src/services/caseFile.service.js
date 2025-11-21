@@ -36,7 +36,9 @@ async function getCaseFilesList(filters) {
     statusId,
     fromDate,
     toDate,
-    createdByUserId
+    createdByUserId,
+    page,
+    pageSize
   } = filters;
 
   const pool = await poolPromise;
@@ -67,6 +69,14 @@ async function getCaseFilesList(filters) {
     request.input('CreatedByUserId', sql.Int, null);
   }
 
+  if (page !== undefined && page !== null) {
+    request.input('Page', sql.Int, page);
+  }
+
+  if (pageSize !== undefined && pageSize !== null) {
+    request.input('PageSize', sql.Int, pageSize);
+  }
+  
   const result = await request.execute('sps_CaseFiles_GetList');
 
   return result.recordset;

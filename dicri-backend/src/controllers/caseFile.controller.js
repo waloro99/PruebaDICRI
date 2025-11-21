@@ -52,7 +52,9 @@ async function getCaseFiles(req, res, next) {
       statusId,
       fromDate,
       toDate,
-      createdByUserId
+      createdByUserId,
+      page,
+      pageSize
     } = req.query;
 
     let statusIdInt = null;
@@ -78,7 +80,9 @@ async function getCaseFiles(req, res, next) {
       statusId: statusIdInt,
       fromDate: fromDate || null,
       toDate: toDate || null,
-      createdByUserId: createdByUserIdInt
+      createdByUserId: createdByUserIdInt,
+      page: page,
+      pageSize: pageSize
     });
 
     return res.json(caseFiles);
