@@ -1,7 +1,7 @@
 const { poolPromise, sql } = require('../db/db.config');
 
 async function getCaseFilesSummary(filters) {
-  const { fromDate, toDate, statusId } = filters;
+  const { fromDate, toDate, statusId, createdByUserId } = filters;
 
   const pool = await poolPromise;
   const request = pool.request();
@@ -13,6 +13,10 @@ async function getCaseFilesSummary(filters) {
     request.input('CaseStatusId', sql.Int, statusId);
   } else {
     request.input('CaseStatusId', sql.Int, null);
+  }
+
+  if (createdByUserId !== undefined && createdByUserId !== null) {
+    request.input('CreatedByUserId', sql.Int, createdByUserId);
   }
 
   const result = await request.execute('sps_Reports_CaseFilesSummary');
@@ -44,8 +48,7 @@ async function getCaseFilesDetail(filters) {
     fromDate,
     toDate,
     statusId,
-    createdByUserId,
-    caseFileId
+    createdByUserId
   } = filters;
 
   const pool = await poolPromise;
@@ -64,12 +67,6 @@ async function getCaseFilesDetail(filters) {
     request.input('CreatedByUserId', sql.Int, createdByUserId);
   } else {
     request.input('CreatedByUserId', sql.Int, null);
-  }
-
-  if (caseFileId !== undefined && caseFileId !== null) {
-    request.input('CaseFileId', sql.Int, caseFileId);
-  } else {
-    request.input('CaseFileId', sql.Int, null);
   }
 
   const result = await request.execute('sps_Reports_CaseFilesDetail');

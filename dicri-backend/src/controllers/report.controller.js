@@ -2,7 +2,7 @@ const reportService = require('../services/report.service');
 
 async function getCaseFilesSummary(req, res, next) {
   try {
-    const { fromDate, toDate, statusId } = req.query;
+    const { fromDate, toDate, statusId, createdByUserId } = req.query;
 
     let statusIdInt = null;
 
@@ -19,7 +19,8 @@ async function getCaseFilesSummary(req, res, next) {
     const summary = await reportService.getCaseFilesSummary({
       fromDate: fromDate || null,
       toDate: toDate || null,
-      statusId: statusIdInt
+      statusId: statusIdInt,
+      createdByUserId: createdByUserId
     });
 
     return res.json({
@@ -41,8 +42,7 @@ async function getCaseFilesDetail(req, res, next) {
       fromDate,
       toDate,
       statusId,
-      createdByUserId,
-      caseFileId
+      createdByUserId
     } = req.query;
 
     let statusIdInt = null;
@@ -65,14 +65,6 @@ async function getCaseFilesDetail(req, res, next) {
       createdByUserIdInt = parsed;
     }
 
-    if (caseFileId !== undefined) {
-      const parsed = parseInt(caseFileId, 10);
-      if (Number.isNaN(parsed)) {
-        return res.status(400).json({ message: 'caseFileId debe ser numérico' });
-      }
-      caseFileIdInt = parsed;
-    }
-
     const detailRows = await reportService.getCaseFilesDetail({
       fromDate: fromDate || null,
       toDate: toDate || null,
@@ -88,8 +80,7 @@ async function getCaseFilesDetail(req, res, next) {
       },
       filters: {
         statusId: statusIdInt,
-        createdByUserId: createdByUserIdInt,
-        caseFileId: caseFileIdInt
+        createdByUserId: createdByUserIdInt
       },
       items: detailRows
     });
