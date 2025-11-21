@@ -24,8 +24,33 @@ async function getUserById(userId) {
     return null;
   }
 
-  return rows[0];
+  const base = rows[0];
+
+  const roles = [];
+  const rolesSet = new Set();
+
+  for (const row of rows) {
+    if (row.RoleId && !rolesSet.has(row.RoleId)) {
+      rolesSet.add(row.RoleId);
+      roles.push({
+        roleId: row.RoleId,
+        name: row.NameRole
+      });
+    }
+  }
+
+  // Devuelves UN SOLO objeto usuario con sus roles en un listado
+  return {
+    userId: base.UserId,
+    firstName: base.FirstName,
+    lastName: base.LastName,
+    userName: base.UserName,
+    email: base.Email,
+    phoneNumber: base.PhoneNumber,
+    roles
+  };
 }
+
 
 async function createUser(data) {
   const {
