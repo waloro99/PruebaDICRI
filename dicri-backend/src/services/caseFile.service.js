@@ -218,6 +218,18 @@ async function deleteCaseFile(data) {
   return rows[0];
 }
 
+async function getCaseFileHistory(caseFileId) {
+  const pool = await poolPromise;
+
+  const result = await pool
+    .request()
+    .input('CaseFileId', sql.Int, caseFileId)
+    .execute('sps_CaseFiles_GetHistory');
+
+  // Si no hay historial, devolvemos []
+  return result.recordset;
+}
+
 module.exports = {
   createCaseFile,
   getCaseFilesList,
@@ -226,5 +238,6 @@ module.exports = {
   approveCaseFile,
   rejectCaseFile,
   updateCaseFile,
-  deleteCaseFile
+  deleteCaseFile,
+  getCaseFileHistory
 };

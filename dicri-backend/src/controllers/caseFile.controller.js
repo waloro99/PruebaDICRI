@@ -282,6 +282,21 @@ async function deleteCaseFile(req, res, next) {
   }
 }
 
+async function getCaseFileHistory(req, res, next) {
+  try {
+    const caseFileId = parseInt(req.params.caseFileId, 10);
+    if (Number.isNaN(caseFileId)) {
+      return res.status(400).json({ message: 'Id de expediente inválido' });
+    }
+
+    const history = await caseFileService.getCaseFileHistory(caseFileId);
+
+    return res.json(history);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   createCaseFile,
   getCaseFiles,
@@ -290,5 +305,6 @@ module.exports = {
   approveCaseFile,
   rejectCaseFile,
   updateCaseFile,
-  deleteCaseFile
+  deleteCaseFile,
+  getCaseFileHistory
 };
