@@ -6,9 +6,9 @@ GO
 ============================================================*/
 INSERT INTO dbo.Roles (NameRole, DescriptionRole, TokenCreated, DateCreated)
 VALUES
-('ADMIN',        N'Administrador del sistema',	'seed-role-1',  '2025-01-01T09:00:00'),
-('COORDINATOR',  N'Coordinador de expedientes',	'seed-role-2',  '2025-01-01T09:05:00'),
-('TECHNICIAN',   N'TÈcnico registrador de evidencias',	'seed-role-3',  '2025-01-01T09:10:00');
+('ADMIN',        N'Administrador del sistema',                'seed-role-1',  '2025-01-01T09:00:00'),
+('COORDINATOR',  N'Coordinador de expedientes',               'seed-role-2',  '2025-01-01T09:05:00'),
+('TECHNICIAN',   N'T√©cnico registrador de evidencias',        'seed-role-3',  '2025-01-01T09:10:00');
 GO
 
 /*============================================================
@@ -17,66 +17,66 @@ GO
 INSERT INTO dbo.Users
     (FirstName, LastName, UserName, Email, PhoneNumber, PasswordUser, TokenCreated, DateCreated)
 VALUES
-(N'Juan',     N'PÈrez',     'jperez',     'juan.perez@dicri.gob.gt',    N'+50255510001', 'P@ssw0rd1',  'seed-user-1',  '2025-01-02T08:00:00'),
-(N'MarÌa',    N'LÛpez',     'mlopez',     'maria.lopez@dicri.gob.gt',   N'+50255510002', 'P@ssw0rd2',  'seed-user-2',  '2025-01-02T08:05:00'),
-(N'Carlos',   N'RamÌrez',   'cramirez',   'carlos.ramirez@dicri.gob.gt','+50255510003', 'P@ssw0rd3',  'seed-user-3',  '2025-01-02T08:10:00'),
-(N'Ana',      N'Gonz·lez',  'agonzalez',  'ana.gonzalez@dicri.gob.gt',  N'+50255510004', 'P@ssw0rd4',  'seed-user-4',  '2025-01-02T08:15:00'),
-(N'Luis',     N'Hern·ndez', 'lhernandez', 'luis.hernandez@dicri.gob.gt',N'+50255510005','P@ssw0rd5',  'seed-user-5',  '2025-01-02T08:20:00'),
-(N'SofÌa',    N'MartÌnez',  'smartinez',  'sofia.martinez@dicri.gob.gt',N'+50255510006','P@ssw0rd6',  'seed-user-6',  '2025-01-02T08:25:00'),
-(N'Diego',    N'Castillo',  'dcastillo',  'diego.castillo@dicri.gob.gt',N'+50255510007','P@ssw0rd7',  'seed-user-7',  '2025-01-02T08:30:00'),
-(N'Laura',    N'RÌos',      'lrios',      'laura.rios@dicri.gob.gt',    N'+50255510008','P@ssw0rd8',  'seed-user-8',  '2025-01-02T08:35:00'),
-(N'Pedro',    N'MÈndez',    'pmendez',    'pedro.mendez@dicri.gob.gt',  N'+50255510009','P@ssw0rd9',  'seed-user-9',  '2025-01-02T08:40:00'),
-(N'Gabriela', N'Sosa',      'gsosa',      'gabriela.sosa@dicri.gob.gt', N'+50255510010','P@ssw0rd10', 'seed-user-10', '2025-01-02T08:45:00');
+(N'Juan',     N'P√©rez',     'jperez',     'juan.perez@dicri.gob.gt',      N'+50255510001', 'P@ssw0rd1',  'seed-user-1',  '2025-01-02T08:00:00'),
+(N'Mar√≠a',    N'L√≥pez',     'mlopez',     'maria.lopez@dicri.gob.gt',     N'+50255510002', 'P@ssw0rd2',  'seed-user-2',  '2025-01-02T08:05:00'),
+(N'Carlos',   N'Ram√≠rez',   'cramirez',   'carlos.ramirez@dicri.gob.gt',  '+50255510003',  'P@ssw0rd3',  'seed-user-3',  '2025-01-02T08:10:00'),
+(N'Ana',      N'Gonz√°lez',  'agonzalez',  'ana.gonzalez@dicri.gob.gt',    N'+50255510004', 'P@ssw0rd4',  'seed-user-4',  '2025-01-02T08:15:00'),
+(N'Luis',     N'Hern√°ndez', 'lhernandez', 'luis.hernandez@dicri.gob.gt',  N'+50255510005', 'P@ssw0rd5',  'seed-user-5',  '2025-01-02T08:20:00'),
+(N'Sof√≠a',    N'Mart√≠nez',  'smartinez',  'sofia.martinez@dicri.gob.gt',  N'+50255510006', 'P@ssw0rd6',  'seed-user-6',  '2025-01-02T08:25:00'),
+(N'Diego',    N'Castillo',  'dcastillo',  'diego.castillo@dicri.gob.gt',  N'+50255510007', 'P@ssw0rd7',  'seed-user-7',  '2025-01-02T08:30:00'),
+(N'Laura',    N'R√≠os',      'lrios',      'laura.rios@dicri.gob.gt',      N'+50255510008', 'P@ssw0rd8',  'seed-user-8',  '2025-01-02T08:35:00'),
+(N'Pedro',    N'M√©ndez',    'pmendez',    'pedro.mendez@dicri.gob.gt',    N'+50255510009', 'P@ssw0rd9',  'seed-user-9',  '2025-01-02T08:40:00'),
+(N'Gabriela', N'Sosa',      'gsosa',      'gabriela.sosa@dicri.gob.gt',   N'+50255510010', 'P@ssw0rd10', 'seed-user-10', '2025-01-02T08:45:00');
 GO
 
 /*============================================================
-  3. CAT¡LOGO ESTADOS DE EXPEDIENTE
+  3. CAT√ÅLOGO ESTADOS DE EXPEDIENTE
 ============================================================*/
 INSERT INTO dbo.Cat_CaseStatuses
     (NameCaseStatus, DescriptionCaseStatus, TokenCreated, DateCreated)
 VALUES
-('REGISTRADO',	N'Expediente registrado por el tÈcnico',	'seed-status-1',  '2025-01-03T09:00:00'),
-('EN REVISI”N',	N'Expediente en revisiÛn por el coordinador',	'seed-status-2',  '2025-01-03T09:05:00'),
-('APROBADO',	N'Expediente aprobado por el coordinador',	'seed-status-3',  '2025-01-03T09:10:00'),
-('RECHAZADO',	N'Expediente rechazado por inconsistencias',	'seed-status-4',  '2025-01-03T09:15:00'),
-('CERRADO',	N'Expediente finalizado y cerrado',	'seed-status-5',  '2025-01-03T09:20:00'),
-('REAPERTURA',	N'Expediente reabierto para nueva revisiÛn',	'seed-status-6',  '2025-01-03T09:25:00'),
-('EN ESPERA',	N'Expediente en espera de informaciÛn adicional',	'seed-status-7',  '2025-01-03T09:30:00'),
-('ARCHIVADO',	N'Expediente archivado fÌsicamente',	'seed-status-8',  '2025-01-03T09:35:00'),
-('CANCELADO',	N'Expediente cancelado por orden judicial',	'seed-status-9',  '2025-01-03T09:40:00');
+('REGISTRADO',  N'Expediente registrado por el t√©cnico',                               'seed-status-1',  '2025-01-03T09:00:00'),
+('EN REVISI√ìN', N'Expediente en revisi√≥n por el coordinador',                         'seed-status-2',  '2025-01-03T09:05:00'),
+('APROBADO',    N'Expediente aprobado por el coordinador',                            'seed-status-3',  '2025-01-03T09:10:00'),
+('RECHAZADO',   N'Expediente rechazado por inconsistencias',                          'seed-status-4',  '2025-01-03T09:15:00'),
+('CERRADO',     N'Expediente finalizado y cerrado',                                   'seed-status-5',  '2025-01-03T09:20:00'),
+('REAPERTURA',  N'Expediente reabierto para nueva revisi√≥n',                          'seed-status-6',  '2025-01-03T09:25:00'),
+('EN ESPERA',   N'Expediente en espera de informaci√≥n adicional',                     'seed-status-7',  '2025-01-03T09:30:00'),
+('ARCHIVADO',   N'Expediente archivado f√≠sicamente',                                  'seed-status-8',  '2025-01-03T09:35:00'),
+('CANCELADO',   N'Expediente cancelado por orden judicial',                           'seed-status-9',  '2025-01-03T09:40:00');
 GO
 
 /*============================================================
-  4. CAT¡LOGO TIPOS DE EVIDENCIA
+  4. CAT√ÅLOGO TIPOS DE EVIDENCIA
 ============================================================*/
 INSERT INTO dbo.Cat_EvidenceTypes
     (NameEvidenceType, DescriptionEvidenceType, TokenCreated, DateCreated)
 VALUES
-('ARMA DE FUEGO',   N'Armas de fuego incautadas',	'seed-etype-1',  '2025-01-04T10:00:00'),
-('MUNICI”N',	N'Municiones asociadas a armas de fuego',	'seed-etype-2',  '2025-01-04T10:05:00'),
-('DOCUMENTO',	N'Documentos fÌsicos como cartas, contratos, etc.',	'seed-etype-3',  '2025-01-04T10:10:00'),
-('ROPA',	N'Prendas de vestir relacionadas con el caso',	'seed-etype-4',  '2025-01-04T10:15:00'),
-('DISPOSITIVO ELECTR”NICO',N'Celulares, laptops u otros dispositivos electrÛnicos',    'seed-etype-5',  '2025-01-04T10:20:00'),
-('PIEZA DE VEHÕCULO',	N'Partes de vehÌculos involucrados',	'seed-etype-6',  '2025-01-04T10:25:00'),
-('HERRAMIENTA',	N'Herramientas utilizadas en el hecho',	'seed-etype-7',  '2025-01-04T10:30:00'),
-('OTROS',	N'Otros objetos varios relacionados',	'seed-etype-8', '2025-01-04T10:45:00');
+('ARMA DE FUEGO',          N'Armas de fuego incautadas',                                'seed-etype-1',  '2025-01-04T10:00:00'),
+('MUNICI√ìN',               N'Municiones asociadas a armas de fuego',                   'seed-etype-2',  '2025-01-04T10:05:00'),
+('DOCUMENTO',              N'Documentos f√≠sicos como cartas, contratos, etc.',         'seed-etype-3',  '2025-01-04T10:10:00'),
+('ROPA',                   N'Prendas de vestir relacionadas con el caso',              'seed-etype-4',  '2025-01-04T10:15:00'),
+('DISPOSITIVO ELECTR√ìNICO',N'Celulares, laptops u otros dispositivos electr√≥nicos',    'seed-etype-5',  '2025-01-04T10:20:00'),
+('PIEZA DE VEH√çCULO',      N'Partes de veh√≠culos involucrados',                        'seed-etype-6',  '2025-01-04T10:25:00'),
+('HERRAMIENTA',            N'Herramientas utilizadas en el hecho',                     'seed-etype-7',  '2025-01-04T10:30:00'),
+('OTROS',                  N'Otros objetos varios relacionados',                       'seed-etype-8',  '2025-01-04T10:45:00');
 GO
 
 /*============================================================
-  5. USER ROLE (RELACI”N USUARIOñROL)
+  5. USER ROLE (RELACI√ìN USUARIO-ROL)
 ============================================================*/
 INSERT INTO dbo.UserRole
     (UserId, RoleId, TokenCreated, DateCreated)
 VALUES
-(1,  1, 'seed-urole-1',  '2025-01-05T08:00:00'), -- Juan - ADMIN
-(2,  2, 'seed-urole-2',  '2025-01-05T08:05:00'), -- MarÌa - COORDINATOR
-(3,  3, 'seed-urole-3',  '2025-01-05T08:10:00'), -- Carlos - TECHNICIAN
-(4,  3, 'seed-urole-4',  '2025-01-05T08:15:00'), -- Ana - TECHNICIAN
-(5,  3, 'seed-urole-5',  '2025-01-05T08:20:00'), -- Luis - TECHNICIAN
-(6,  3, 'seed-urole-6',  '2025-01-05T08:25:00'), -- SofÌa - TECHNICIAN
-(7,  2, 'seed-urole-7',  '2025-01-05T08:30:00'), -- Diego - COORDINATOR
-(8,  1, 'seed-urole-8',  '2025-01-05T08:35:00'), -- Laura - ADMIN
-(9,  2, 'seed-urole-9',  '2025-01-05T08:40:00'), -- Pedro - COORDINATOR
+(1,  1, 'seed-urole-1',  '2025-01-05T08:00:00'), -- Juan     - ADMIN
+(2,  2, 'seed-urole-2',  '2025-01-05T08:05:00'), -- Mar√≠a    - COORDINATOR
+(3,  3, 'seed-urole-3',  '2025-01-05T08:10:00'), -- Carlos   - TECHNICIAN
+(4,  3, 'seed-urole-4',  '2025-01-05T08:15:00'), -- Ana      - TECHNICIAN
+(5,  3, 'seed-urole-5',  '2025-01-05T08:20:00'), -- Luis     - TECHNICIAN
+(6,  3, 'seed-urole-6',  '2025-01-05T08:25:00'), -- Sof√≠a    - TECHNICIAN
+(7,  2, 'seed-urole-7',  '2025-01-05T08:30:00'), -- Diego    - COORDINATOR
+(8,  1, 'seed-urole-8',  '2025-01-05T08:35:00'), -- Laura    - ADMIN
+(9,  2, 'seed-urole-9',  '2025-01-05T08:40:00'), -- Pedro    - COORDINATOR
 (10, 3, 'seed-urole-10', '2025-01-05T08:45:00'); -- Gabriela - TECHNICIAN
 GO
 
@@ -86,19 +86,19 @@ GO
 INSERT INTO dbo.CaseFiles
     (CaseNumber, DescriptionCase, ProsecutorOffice, CreatedByUserId, CaseStatusId, Observations, TokenCreated, DateCreated)
 VALUES
-('DICRI-2025-0001', N'Robo agravado en zona 1',              N'FiscalÌa Metropolitana',                       3, 1,
- N'Expediente reciÈn ingresado por el tÈcnico.',                 'seed-case-1',  '2025-02-01T09:00:00'),
-('DICRI-2025-0002', N'Homicidio en investigaciÛn',             N'FiscalÌa de Delitos contra la Vida',          4, 2,
- N'Enviado a coordinaciÛn para revisiÛn inicial.',               'seed-case-2',  '2025-02-02T10:00:00'),
-('DICRI-2025-0004', N'ExtorsiÛn a comercio local',             N'FiscalÌa contra la ExtorsiÛn',                3, 4,
- N'Rechazado por falta de fotografÌas de la evidencia.',         'seed-case-3',  '2025-02-04T12:00:00'),
-('DICRI-2025-0005', N'Incendio en vivienda',                   N'FiscalÌa de Delitos contra el Patrimonio',    5, 2,
- N'En revisiÛn por posible expansiÛn de investigaciÛn.',         'seed-case-4',  '2025-02-05T13:00:00'),
-('DICRI-2025-0006', N'Secuestro fallido',                      N'FiscalÌa contra el Crimen Organizado',        7, 1,
- N'Ingreso preliminar, se esperan m·s indicios.',                'seed-case-5',  '2025-02-06T14:00:00'),
-('DICRI-2025-0008', N'Violencia intrafamiliar',                N'FiscalÌa de la Mujer',                        4, 7,
- N'En espera de informe mÈdico legal.',                          'seed-case-6',  '2025-02-08T16:00:00'),
-('DICRI-2025-0010', N'Delitos inform·ticos',                   N'FiscalÌa de Delitos Inform·ticos',            10, 2,
+('DICRI-2025-0001', N'Robo agravado en zona 1',              N'Fiscal√≠a Metropolitana',                       3, 1,
+ N'Expediente reci√©n ingresado por el t√©cnico.',                 'seed-case-1',  '2025-02-01T09:00:00'),
+('DICRI-2025-0002', N'Homicidio en investigaci√≥n',             N'Fiscal√≠a de Delitos contra la Vida',          4, 2,
+ N'Enviado a coordinaci√≥n para revisi√≥n inicial.',               'seed-case-2',  '2025-02-02T10:00:00'),
+('DICRI-2025-0004', N'Extorsi√≥n a comercio local',             N'Fiscal√≠a contra la Extorsi√≥n',                3, 4,
+ N'Rechazado por falta de fotograf√≠as de la evidencia.',         'seed-case-3',  '2025-02-04T12:00:00'),
+('DICRI-2025-0005', N'Incendio en vivienda',                   N'Fiscal√≠a de Delitos contra el Patrimonio',    5, 2,
+ N'En revisi√≥n por posible expansi√≥n de investigaci√≥n.',         'seed-case-4',  '2025-02-05T13:00:00'),
+('DICRI-2025-0006', N'Secuestro fallido',                      N'Fiscal√≠a contra el Crimen Organizado',        7, 1,
+ N'Ingreso preliminar, se esperan m√°s indicios.',                'seed-case-5',  '2025-02-06T14:00:00'),
+('DICRI-2025-0008', N'Violencia intrafamiliar',                N'Fiscal√≠a de la Mujer',                        4, 7,
+ N'En espera de informe m√©dico legal.',                          'seed-case-6',  '2025-02-08T16:00:00'),
+('DICRI-2025-0010', N'Delitos inform√°ticos',                   N'Fiscal√≠a de Delitos Inform√°ticos',            10, 2,
  N'Analizando evidencia digital.',                               'seed-case-7', '2025-02-10T18:00:00');
 GO
 
@@ -109,33 +109,33 @@ INSERT INTO dbo.Evidence
     (CaseFileId, EvidenceCode, DescriptionEvidence, EvidenceTypeId, Color, SizeDescription, WeightDescription,
      FoundLocation, CurrentLocation, CreatedByUserId, Observations, TokenCreated, DateCreated)
 VALUES
-(1, 'E-001', N'Pistola calibre 9mm marca Glock',                 1, N'Negro',   N'20 cm largo', 0.950,
+(1, 'E-001', N'Pistola calibre 9mm marca Glock',                 1, N'Negro',        N'20 cm largo',       0.950,
  N'Escena del crimen, sala principal',        N'Bodega central - Estante A1',      3,
  N'Arma asegurada con cadena de custodia.',                       'seed-evid-1',  '2025-02-01T09:30:00'),
-(1, 'E-002', N'Cargador con 10 municiones calibre 9mm',          2, N'Negro',   N'10 cm',       0.250,
+(1, 'E-002', N'Cargador con 10 municiones calibre 9mm',          2, N'Negro',        N'10 cm',             0.250,
  N'Escena del crimen, junto a la pistola',    N'Bodega central - Estante A1',      3,
  N'Municiones asociadas al arma principal.',                      'seed-evid-2',  '2025-02-01T09:35:00'),
-(2, 'E-001', N'Carta de amenaza escrita a mano',                 3, N'Blanco',  N'TamaÒo carta',0.020,
- N'HabitaciÛn principal de la vÌctima',        N'Bodega de documentos - Gaveta D3',4,
- N'Documento enviado a grafologÌa.',                              'seed-evid-3',  '2025-02-02T10:30:00'),
-(2, 'E-002', N'Camiseta con manchas de sangre',                  4, N'Rojo',    N'Talla M',     0.300,
- N'Canasta de ropa en la vivienda',            N'C·mara frÌa - Anaquel B2',        4,
- N'Enviada a laboratorio para an·lisis de ADN.',                  'seed-evid-4',  '2025-02-02T10:40:00'),
-(3, 'E-001', N'Bolsa con sustancia blanca en polvo',             8, N'Transparente', N'Bolsa pequeÒa', 0.050,
- N'Mesa de la cocina',                         N'Bodega de evidencia quÌmica - C1',5,
- N'Posible cocaÌna, pendiente de resultado.',                     'seed-evid-5',  '2025-02-03T11:30:00'),
-(4, 'E-001', N'TelÈfono celular smartphone',                     5, N'Negro',   N'6 pulgadas',  0.180,
- N'Mostrador del comercio extorsionado',       N'Lab. de inform·tica forense',     3,
- N'Contiene mensajes de extorsiÛn.',                               'seed-evid-6',  '2025-02-04T12:30:00'),
-(5, 'E-001', N'Botella con lÌquido inflamable',                  7, N'Transparente', N'1 litro', 0.900,
- N'Patio trasero de la vivienda',              N'Bodega de quÌmicos - Estante C2', 5,
+(2, 'E-001', N'Carta de amenaza escrita a mano',                 3, N'Blanco',       N'Tama√±o carta',      0.020,
+ N'Habitaci√≥n principal de la v√≠ctima',        N'Bodega de documentos - Gaveta D3',4,
+ N'Documento enviado a grafolog√≠a.',                              'seed-evid-3',  '2025-02-02T10:30:00'),
+(2, 'E-002', N'Camiseta con manchas de sangre',                  4, N'Rojo',         N'Talla M',           0.300,
+ N'Canasta de ropa en la vivienda',            N'C√°mara fr√≠a - Anaquel B2',        4,
+ N'Enviada a laboratorio para an√°lisis de ADN.',                  'seed-evid-4',  '2025-02-02T10:40:00'),
+(3, 'E-001', N'Bolsa con sustancia blanca en polvo',             8, N'Transparente', N'Bolsa peque√±a',     0.050,
+ N'Mesa de la cocina',                         N'Bodega de evidencia qu√≠mica - C1',5,
+ N'Posible coca√≠na, pendiente de resultado.',                     'seed-evid-5',  '2025-02-03T11:30:00'),
+(4, 'E-001', N'Tel√©fono celular smartphone',                     5, N'Negro',        N'6 pulgadas',        0.180,
+ N'Mostrador del comercio extorsionado',       N'Lab. de inform√°tica forense',     3,
+ N'Contiene mensajes de extorsi√≥n.',                              'seed-evid-6',  '2025-02-04T12:30:00'),
+(5, 'E-001', N'Botella con l√≠quido inflamable',                  7, N'Transparente', N'1 litro',           0.900,
+ N'Patio trasero de la vivienda',              N'Bodega de qu√≠micos - Estante C2', 5,
  N'Se sospecha uso para iniciar incendio.',                        'seed-evid-7',  '2025-02-05T13:30:00'),
-(6, 'E-001', N'Cuchillo de cocina con manchas',                  7, N'Plateado',N'25 cm',       0.200,
- N'VehÌculo utilizado en el secuestro',        N'Bodega central - Estante B1',     7,
+(6, 'E-001', N'Cuchillo de cocina con manchas',                  7, N'Plateado',     N'25 cm',             0.200,
+ N'Veh√≠culo utilizado en el secuestro',        N'Bodega central - Estante B1',     7,
  N'Enviado a laboratorio para huellas y ADN.',                    'seed-evid-8',  '2025-02-06T14:30:00'),
-(7, 'E-001', N'Laptop marca Dell con posible evidencia digital', 5, N'Negro',   N'14 pulgadas', 2.000,
- N'HabitaciÛn de la vÌctima',                  N'Lab. de inform·tica forense',     10,
- N'Pendiente extracciÛn de informaciÛn.',                          'seed-evid-9', '2025-02-08T16:30:00');
+(7, 'E-001', N'Laptop marca Dell con posible evidencia digital', 5, N'Negro',        N'14 pulgadas',       2.000,
+ N'Habitaci√≥n de la v√≠ctima',                  N'Lab. de inform√°tica forense',     10,
+ N'Pendiente extracci√≥n de informaci√≥n.',                          'seed-evid-9', '2025-02-08T16:30:00');
 GO
 
 /*============================================================
@@ -144,16 +144,16 @@ GO
 INSERT INTO dbo.CaseStatusHistory
     (CaseFileId, CaseStatusId, ChangedByUserId, Observations, TokenCreated, DateCreated)
 VALUES
-(1, 1, 3, N'Expediente registrado por el tÈcnico Carlos.', 'seed-hist-1',  '2025-02-01T09:05:00'),
-(2, 1, 4, N'Expediente registrado por la tÈcnica Ana.', 'seed-hist-2',  '2025-02-02T10:05:00'),
-(2, 2, 2, N'Coordinadora MarÌa iniciÛ la revisiÛn del expediente.', 'seed-hist-3',  '2025-02-02T11:00:00'),
-(3, 1, 3, N'Expediente registrado por el tÈcnico Carlos.', 'seed-hist-4',  '2025-02-04T12:05:00'),
-(3, 4, 2, N'Coordinadora MarÌa rechazÛ el expediente por falta de evidencia fotogr·fica.', 'seed-hist-5',  '2025-02-04T13:00:00'),
-(4, 1, 5, N'Expediente registrado por el tÈcnico Luis.', 'seed-hist-6',  '2025-02-05T13:05:00'),
-(4, 2, 9, N'Coordinador Pedro colocÛ el expediente en revisiÛn por posible expansiÛn de la investigaciÛn.', 'seed-hist-7',  '2025-02-05T14:00:00'),
-(5, 1, 7, N'Expediente registrado por el tÈcnico Diego en apoyo al ·rea operativa.', 'seed-hist-8',  '2025-02-06T14:05:00'),
-(6, 1, 4, N'Expediente registrado por la tÈcnica Ana.', 'seed-hist-9',  '2025-02-08T16:05:00'),
-(6, 7, 2, N'Coordinadora MarÌa dejÛ el expediente en espera de informe mÈdico legal.', 'seed-hist-10', '2025-02-08T17:00:00'),
-(7, 1, 10, N'Expediente registrado por la tÈcnica Gabriela.', 'seed-hist-11', '2025-02-10T18:05:00'),
-(7, 2, 2, N'Coordinadora MarÌa colocÛ el expediente en revisiÛn por an·lisis de evidencia digital.', 'seed-hist-12', '2025-02-10T19:00:00');
+(1, 1, 3,  N'Expediente registrado por el t√©cnico Carlos.',                       'seed-hist-1',  '2025-02-01T09:05:00'),
+(2, 1, 4,  N'Expediente registrado por la t√©cnica Ana.',                           'seed-hist-2',  '2025-02-02T10:05:00'),
+(2, 2, 2,  N'Coordinadora Mar√≠a inici√≥ la revisi√≥n del expediente.',              'seed-hist-3',  '2025-02-02T11:00:00'),
+(3, 1, 3,  N'Expediente registrado por el t√©cnico Carlos.',                       'seed-hist-4',  '2025-02-04T12:05:00'),
+(3, 4, 2,  N'Coordinadora Mar√≠a rechaz√≥ el expediente por falta de evidencia fotogr√°fica.', 'seed-hist-5',  '2025-02-04T13:00:00'),
+(4, 1, 5,  N'Expediente registrado por el t√©cnico Luis.',                         'seed-hist-6',  '2025-02-05T13:05:00'),
+(4, 2, 9,  N'Coordinador Pedro coloc√≥ el expediente en revisi√≥n por posible expansi√≥n de la investigaci√≥n.', 'seed-hist-7',  '2025-02-05T14:00:00'),
+(5, 1, 7,  N'Expediente registrado por el t√©cnico Diego en apoyo al √°rea operativa.', 'seed-hist-8',  '2025-02-06T14:05:00'),
+(6, 1, 4,  N'Expediente registrado por la t√©cnica Ana.',                          'seed-hist-9',  '2025-02-08T16:05:00'),
+(6, 7, 2,  N'Coordinadora Mar√≠a dej√≥ el expediente en espera de informe m√©dico legal.', 'seed-hist-10', '2025-02-08T17:00:00'),
+(7, 1, 10, N'Expediente registrado por la t√©cnica Gabriela.',                     'seed-hist-11', '2025-02-10T18:05:00'),
+(7, 2, 2,  N'Coordinadora Mar√≠a coloc√≥ el expediente en revisi√≥n por an√°lisis de evidencia digital.', 'seed-hist-12', '2025-02-10T19:00:00');
 GO
