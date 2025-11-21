@@ -1,20 +1,22 @@
+
 import { createContext, useContext, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import api from "../services/api";
 
 export interface User {
   userId: number;
-  name: string;
-  email: string;
-  roleId: number;
-  roleName: string;
+  userName: string;
+  fullName?: string;
+  email?: string;
+  roleId?: number;
+  roleName?: string;
 }
 
 interface LoginResponse {
   success: boolean;
   message?: string;
   token: string;
-  user: User;
+  user: any;
 }
 
 interface AuthContextValue {
@@ -42,16 +44,34 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(false);
   }, []);
 
-    const login = async (userName: string, password: string) => {
+  const login = async (userName: string, password: string) => {
     const { data } = await api.post<LoginResponse>("/auth/login", {
       userName,
       password,
     });
 
+    const rawUser: any = data.user;
+
+    const fullNameCandidate =
+      rawUser.fullName ??
+      rawUser.FullName ??
+      `${rawUser.firstName ?? rawUser.FirstName ?? ""} ${
+        rawUser.lastName ?? rawUser.LastName ?? ""
+      }`.trim();
+
+    const normalizedUser: User = {
+      userId: rawUser.userId ?? rawUser.UserId,
+      userName: rawUser.userName ?? rawUser.UserName,
+      fullName: fullNameCandidate || undefined,
+      email: rawUser.email ?? rawUser.Email,
+      roleId: rawUser.roleId ?? rawUser.RoleId,
+      roleName: rawUser.roleName ?? rawUser.RoleName,
+    };
+
     setToken(data.token);
-    setUser(data.user);
+    setUser(normalizedUser);
     localStorage.setItem("token", data.token);
-    localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("user", JSON.stringify(normalizedUser));
   };
 
   const logout = () => {

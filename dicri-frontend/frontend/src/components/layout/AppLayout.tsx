@@ -1,3 +1,4 @@
+
 import {
   AppBar,
   Toolbar,
@@ -13,7 +14,7 @@ const AppLayout = () => {
   const { user, logout } = useAuth();
 
   return (
-    <>
+    <Box sx={{ minHeight: "100vh", bgcolor: "#303030" }}>
       <AppBar position="static">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box>
@@ -22,7 +23,8 @@ const AppLayout = () => {
             </Typography>
             {user && (
               <Typography variant="caption">
-                {user.name} ({user.roleName})
+                {user.fullName ?? user.userName}
+                {user.roleName ? ` (${user.roleName})` : ""}
               </Typography>
             )}
           </Box>
@@ -33,7 +35,7 @@ const AppLayout = () => {
               to="/casefiles"
               sx={{ mr: 1 }}
             >
-              Expedientes
+              EXPEDIENTES
             </Button>
             <Button
               color="inherit"
@@ -41,18 +43,23 @@ const AppLayout = () => {
               to="/reports"
               sx={{ mr: 1 }}
             >
-              Reportes
+              REPORTES
             </Button>
             <Button color="inherit" onClick={logout}>
-              Salir
+              SALIR
             </Button>
           </Box>
         </Toolbar>
       </AppBar>
-      <Container sx={{ mt: 3 }}>
-        <Outlet />
-      </Container>
-    </>
+
+      {/* Contenido */}
+      <Box sx={{ py: 3 }}>
+        <Container maxWidth="xl">
+          {/* Aquí ya entra CaseFilesList, Reports, etc. */}
+          <Outlet />
+        </Container>
+      </Box>
+    </Box>
   );
 };
 
