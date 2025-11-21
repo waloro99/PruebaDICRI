@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: dicri-db
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "StrongPassword123!"
+      MSSQL_PID: "Express"
+    ports:
+      - "11433:1433"   # puerto del host 11433 -> 1433 dentro del contenedor
+
+  api:
+    build:
+      context: ./dicri-backend
+    container_name: dicri-api
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: "production"
+      PORT: "3000"
+
+      # Datos de conexión a la BD dentro de Docker
+      DB_HOST: "db"
+      DB_PORT: "1433"
+      DB_USER: "sa"
+      DB_PASSWORD: "StrongPassword123!"
+      DB_NAME: "DICRI_Prueba"
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./dicri-frontend
+    container_name: dicri-frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "80:80"
