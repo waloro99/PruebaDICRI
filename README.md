@@ -33,6 +33,22 @@ Ejemplo:
   - git clone <URL_DEL_REPOSITORIO>
   - cd dicri-backend
   - npm install
+  - npm run dev
+  - npm test
+
+## Pruebas unitarias del backend
+
+El backend incluye un conjunto mínimo de pruebas unitarias implementadas con **Jest**, enfocadas en los componentes más críticos del MVP: autenticación, autorización y creación de expedientes.
+
+### Configuración
+
+Jest se instala como dependencia de desarrollo y se configura en el archivo `jest.config.js` en la raíz del proyecto.  
+Los archivos de prueba se encuentran en:
+
+**src/__tests__/**
+  - auth.middleware.test.js
+  - auth.controller.test.js
+  - caseFile.controller.test.js
 
 
 
