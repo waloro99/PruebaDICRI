@@ -13,10 +13,10 @@ export interface User {
 }
 
 interface LoginResponse {
-  success: boolean;
+  success?: boolean;
   message?: string;
-  token: string;
-  user: any;
+  token?: string;
+  user?: any;
 }
 
 interface AuthContextValue {
@@ -44,41 +44,80 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(false);
   }, []);
 
+  const clearAuth = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  };
+
   const login = async (userName: string, password: string) => {
-    const { data } = await api.post<LoginResponse>("/auth/login", {
-      userName,
-      password,
-    });
+    try {
+      const { data } = await api.post<LoginResponse>("/auth/login", {
+        userName,
+        password,
+      });
 
-    const rawUser: any = data.user;
+      if (!data || !data.token || !data.user) {
+        clearAuth();
+        throw new Error(
+          data?.message || "Usuario o contraseña inválidos."
+        );
+      }
 
-    const fullNameCandidate =
-      rawUser.fullName ??
-      rawUser.FullName ??
-      `${rawUser.firstName ?? rawUser.FirstName ?? ""} ${
-        rawUser.lastName ?? rawUser.LastName ?? ""
-      }`.trim();
+      const rawUser: any = data.user;
 
-    const normalizedUser: User = {
-      userId: rawUser.userId ?? rawUser.UserId,
-      userName: rawUser.userName ?? rawUser.UserName,
-      fullName: fullNameCandidate || undefined,
-      email: rawUser.email ?? rawUser.Email,
-      roleId: rawUser.roleId ?? rawUser.RoleId,
-      roleName: rawUser.roleName ?? rawUser.RoleName,
-    };
+      const userId = rawUser.userId ?? rawUser.UserId;
+      const userNameResp = rawUser.userName ?? rawUser.UserName;
+      const roles = rawUser.roles ?? rawUser.Roles;
 
-    setToken(data.token);
-    setUser(normalizedUser);
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user", JSON.stringify(normalizedUser));
+      if (
+        userId == null ||
+        userNameResp == null ||
+        (Array.isArray(roles) && roles.length === 0)
+      ) {
+        clearAuth();
+        throw new Error("Usuario o contraseña inválidos.");
+      }
+
+      const firstName = rawUser.firstName ?? rawUser.FirstName ?? "";
+      const lastName = rawUser.lastName ?? rawUser.LastName ?? "";
+
+      let fullNameCandidate =
+        rawUser.fullName ??
+        rawUser.FullName ??
+        `${firstName} ${lastName}`.trim();
+
+      if (
+        !fullNameCandidate ||
+        fullNameCandidate.toLowerCase() === "null null"
+      ) {
+        fullNameCandidate = `${firstName} ${lastName}`.trim();
+      }
+
+      const normalizedUser: User = {
+        userId,
+        userName: userNameResp,
+        fullName: fullNameCandidate || undefined,
+        email: rawUser.email ?? rawUser.Email,
+        roleId: rawUser.roleId ?? rawUser.RoleId,
+        roleName: rawUser.roleName ?? rawUser.RoleName,
+      };
+
+      setToken(data.token!);
+      setUser(normalizedUser);
+      localStorage.setItem("token", data.token!);
+      localStorage.setItem("user", JSON.stringify(normalizedUser));
+    } catch (error: any) {
+      clearAuth();
+      const msg =
+        error?.message || "Usuario o contraseña inválidos.";
+      throw new Error(msg);
+    }
   };
 
   const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    clearAuth();
   };
 
   return (

@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   Box,
-  Container,
 } from "@mui/material";
 import { Link as RouterLink, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -14,7 +13,8 @@ const AppLayout = () => {
   const { user, logout } = useAuth();
 
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#303030" }}>
+    <Box sx={{ minHeight: "100vh", bgcolor: "#ffffff" }}>
+      {/* Barra superior */}
       <AppBar position="static">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box>
@@ -52,12 +52,23 @@ const AppLayout = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Contenido */}
-      <Box sx={{ py: 3 }}>
-        <Container maxWidth="xl">
-          {/* Aquí ya entra CaseFilesList, Reports, etc. */}
+      {/* Contenido centrado */}
+      <Box
+        sx={{
+          py: 3,
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            maxWidth: 1100,   // ancho máximo del “card”
+            px: 2,
+          }}
+        >
           <Outlet />
-        </Container>
+        </Box>
       </Box>
     </Box>
   );

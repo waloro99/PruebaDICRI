@@ -188,7 +188,7 @@ async function rejectCaseFile(req, res, next) {
 
     if (!rejectionReason || typeof rejectionReason !== 'string' || !rejectionReason.trim()) {
       return res.status(400).json({
-        message: 'E obligatorio una razón de rechazo válida'
+        message: 'Es obligatorio una razón de rechazo válida'
       });
     }
 

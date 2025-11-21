@@ -46,6 +46,357 @@
 			"response": []
 		},
 		{
+			"name": "TIPOS DE INDICIOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/catalogs/evidence-types",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"catalogs",
+						"evidence-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PERFIL USUARIO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/auth/me",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LISTADO DE USUARIOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/users",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BUSQUEDA USUARIO ESPECIFICO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/users/11",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LISTADO DE ROLES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/roles",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LISTADO DE EXPEDIENTES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/casefiles?page=1&pageSize=4",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2025-02-01",
+							"disabled": true
+						},
+						{
+							"key": "toDate",
+							"value": "2025-02-02",
+							"disabled": true
+						},
+						{
+							"key": "createdByUserId",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "statusId",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "pageSize",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BUSQUEDA POR EXPEDIENTE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/casefiles/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BUSQUEDA INDICIOS POR EXPEDIENTE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/casefiles/2/evidences",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"2",
+						"evidences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BUSQUEDA INDICIO ESPECIFICO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/evidences/10",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"evidences",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HISTORICO DE EXPEDIENTE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/casefiles/8/history",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"8",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REPORTE DE EXPEDIENTES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/reports/casefiles/summary?fromDate=2025-02-01&toDate=2025-02-31&statusId=3&createdByUserId=5",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"reports",
+						"casefiles",
+						"summary"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2025-02-01"
+						},
+						{
+							"key": "toDate",
+							"value": "2025-02-31"
+						},
+						{
+							"key": "statusId",
+							"value": "3"
+						},
+						{
+							"key": "createdByUserId",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REPORTE DE EXPEDIENTE ESPECIFICO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/reports/casefiles/detail?fromDate=2025-02-01&toDate=2025-02-31&statusId=3&createdByUserId=3",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"reports",
+						"casefiles",
+						"detail"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2025-02-01"
+						},
+						{
+							"key": "toDate",
+							"value": "2025-02-31"
+						},
+						{
+							"key": "statusId",
+							"value": "3"
+						},
+						{
+							"key": "createdByUserId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Intentamos leer el cuerpo de la respuesta como JSON\r",
+							"let jsonData;\r",
+							"try {\r",
+							"    jsonData = pm.response.json();\r",
+							"} catch (e) {\r",
+							"    console.log('La respuesta no es JSON o está vacía', e);\r",
+							"}\r",
+							"\r",
+							"// Si hay token en la respuesta, lo guardamos como variable de colección\r",
+							"if (jsonData && jsonData.token) {\r",
+							"    pm.collectionVariables.set('token', jsonData.token);\r",
+							"    console.log('Token actualizado en la colección');\r",
+							"} else {\r",
+							"    console.log('No se encontró la propiedad \"token\" en la respuesta');\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\": \"gsosa \",\r\n    \"password\": \"P@ssw0rd10\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/auth/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "CREAR USUARIO",
 			"request": {
 				"method": "POST",
@@ -67,6 +418,300 @@
 					"path": [
 						"api",
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREAR EXPEDIENTE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"caseNumber\": \"DICRI-2025-0012\",\r\n  \"descriptionCase\": \"Perdida de vehiculo en zona 12\",\r\n  \"prosecutorOffice\": \"Fiscalía ciudad\",\r\n  \"caseStatusId\": 1,\r\n  \"observations\": \"Expediente creado por técnico en turno\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/casefiles",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ENVIAR A REVISION EXPEDIENTE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/casefiles/9/send-to-review",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"9",
+						"send-to-review"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "APROBAR EXPEDIENTE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"approvalComment\": \"Revisado y aprobado por coordinador.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/casefiles/8/approve",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"8",
+						"approve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RECHAZAR EXPEDIENTE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rejectionReason\": \"No cumple con los requisitos mínimos de documentación.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/casefiles/9/reject",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"9",
+						"reject"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREAR INDICIOS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"evidenceCode\": \"IND-01\",\r\n  \"descriptionEvidence\": \"Cuchillo con manchas hemáticas\",\r\n  \"evidenceTypeId\": 1,\r\n  \"color\": \"Plateado\",\r\n  \"sizeDescription\": \"20 cm de largo\",\r\n  \"weightDescription\": 0.250,\r\n  \"foundLocation\": \"Cocina de la vivienda\",\r\n  \"currentLocation\": \"Bodega central\",\r\n  \"observations\": \"Embolsado y etiquetado\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/casefiles/5/evidences",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"5",
+						"evidences"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDITAR USUARIO",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"María\",\r\n  \"lastName\": \"López\",\r\n  \"userName\": \"mlopez2\",\r\n  \"email\": \"maria.lopez@dicri.gob.gt\",\r\n  \"phoneNumber\": \"+50255510002\",\r\n  \"password\": null,\r\n  \"roleIds\": [1,2,3] \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/users/2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDITAR EXPEDIENTE",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"caseNumber\": \"DICRI-2025-0012\",\r\n  \"descriptionCase\": \"Homicidio en zona 1 (detalle actualizado)\",\r\n  \"prosecutorOffice\": \"Fiscalía Metropolitana\",\r\n  \"observations\": \"Actualizado por técnico de turno\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/casefiles/9",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDITAR INDICIO",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"evidenceCode\": \"IND-01\",\r\n  \"descriptionEvidence\": \"Tubo\",\r\n  \"evidenceTypeId\": 1,\r\n  \"color\": \"Plateado\",\r\n  \"sizeDescription\": \"30 cm\",\r\n  \"weightDescription\": 0.25,\r\n  \"foundLocation\": \"Cocina\",\r\n  \"currentLocation\": \"Bodega central - estante 3\",\r\n  \"observations\": \"Revisado en fecha 20/11/2025\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/evidences/10",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"evidences",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ACTIVAR/DESACTIVAR USUARIO",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isActive\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/users/3/status",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"3",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ELIMINAR EXPEDIENTE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/casefiles/9",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"casefiles",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ELIMINAR INDICIO",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/evidences/10",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"evidences",
+						"10"
 					]
 				}
 			},

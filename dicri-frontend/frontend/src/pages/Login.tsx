@@ -1,4 +1,4 @@
-// src/pages/Login.tsx
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
@@ -9,6 +9,8 @@ import {
   Box,
   Typography,
   Paper,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useAuth } from "../context/AuthContext";
@@ -26,23 +28,36 @@ const Login = () => {
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     try {
       setLoading(true);
       setError(null);
+      setOpenSnackbar(false);
       await login(data.userName, data.password);
+      // Solo si todo salió bien
       navigate("/casefiles");
     } catch (err: any) {
       console.error(err);
       const msg =
         err?.response?.data?.message ??
         err?.response?.data?.error ??
-        "Error al iniciar sesión. Revisa usuario y contraseña.";
+        err?.message ??
+        "Usuario o contraseña inválidos.";
       setError(msg);
+      setOpenSnackbar(true);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleCloseSnackbar = (
+    _event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") return;
+    setOpenSnackbar(false);
   };
 
   return (
@@ -52,11 +67,13 @@ const Login = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        bgcolor: "#f5f5f5",
+        bgcolor: "#ffffff",
       }}
     >
       <Paper sx={{ p: 4, width: "100%", maxWidth: 400 }}>
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Box
+          sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        >
           <Avatar sx={{ mb: 1 }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -97,6 +114,22 @@ const Login = () => {
           </Button>
         </Box>
       </Paper>
+
+      {/* Popup de error */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={4000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          {error || "Usuario o contraseña inválidos."}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
