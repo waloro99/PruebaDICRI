@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "d747b6dc-cc06-42e0-b3a0-5ec604b65902",
+		"name": "DICRI Collection",
+		"description": "Colección de los diferentes endpoint, para la prueba tecnica del sistema de DICRI.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10111679",
+		"_collection_link": "https://crimson-firefly-425092.postman.co/workspace/My-Workspace~b46b8015-7bd5-46ae-898d-3b53b4f1e277/collection/10111679-d747b6dc-cc06-42e0-b3a0-5ec604b65902?action=share&source=collection_link&creator=10111679"
+	},
+	"item": [
+		{
+			"name": "PRUEBA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/health",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ESTADOS DE CASO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api/catalogs/case-statuses",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"catalogs",
+						"case-statuses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREAR USUARIO",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Walter\",\r\n  \"lastName\": \"Orozco\",\r\n  \"userName\": \"worozco\",\r\n  \"email\": \"walter.orozco@example.com\",\r\n  \"phoneNumber\": \"+50255510011\",\r\n  \"password\": \"Password123!\",\r\n  \"roleIds\": [1, 2, 3]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/users",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
