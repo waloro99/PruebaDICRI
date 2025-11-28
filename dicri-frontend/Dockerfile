@@ -15,8 +15,7 @@ RUN npm install
 # Copiamos el resto del código del frontend
 COPY frontend/ ./
 
-# Si tu frontend ya llama al backend como "http://localhost:4000"
-# no cambies nada. Si usas variable, puedes usar VITE_API_URL aquí.
+
 RUN npm run build
 
 ########################
